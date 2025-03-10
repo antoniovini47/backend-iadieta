@@ -1,10 +1,9 @@
 import fastify from "fastify";
+import geminiRoutes from "./routes/geminiRoute";
 
-const server = fastify();
+const server = fastify({ logger: true });
 
-server.get("/", async (request, reply) => {
-  return { message: "Hello, Fastify!" };
-});
+server.register(geminiRoutes);
 
 const start = async () => {
   try {
