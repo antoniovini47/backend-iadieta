@@ -1,8 +1,8 @@
-import { FastifyInstance } from "fastify";
+import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import GeminiService from "../services/GeminiService";
 
 const geminiRoutes = async (fastify: FastifyInstance) => {
-  fastify.post("/analyze/image-only", async (request, reply) => {
+  fastify.post("/analyze/image-only", async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const { image64Base } = request.body as { image64Base: string };
 
