@@ -1,8 +1,14 @@
 import fastify from "fastify";
+import cors from "@fastify/cors";
 import geminiRoutes from "./routes/geminiRoute";
 
 const server = fastify({ logger: true });
 
+server.register(cors, {
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+});
 server.register(geminiRoutes);
 
 server.get("/", async (request, reply) => {
