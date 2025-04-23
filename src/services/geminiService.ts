@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GEMINI_API_KEY, BASE_API_URL } from "../utils/geminiEnv";
+import { GEMINI_API_KEY, BASE_API_URL, GEMINI_MODEL } from "../utils/geminiEnv";
 
 // const promptStandardFreeUser =
 //   "This is a picture of a meal. Estimate the amount of kcal on picture and return the result in form of a json in that format: {k: x}, where x is a int for the amount of kcal.";
@@ -8,7 +8,7 @@ const promptStandardPremiumUser =
 
 const promptDefined = promptStandardPremiumUser; // ! TODO: Do Check if the user is premium or not
 
-const urlImageAPI = `${BASE_API_URL}/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const urlImageAPI = `${BASE_API_URL}/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
 
 const GeminiService = {
   getImageResponse: async (image64Base: string) => {
