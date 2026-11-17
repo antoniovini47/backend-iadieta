@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import cors from "@fastify/cors";
 import geminiRoutes from "./routes/geminiRoute";
+import cronRoutes from "./routes/cronRoute";
 
 const server = fastify({ logger: true });
 
@@ -10,6 +11,7 @@ server.register(cors, {
   allowedHeaders: ["Content-Type"],
 });
 server.register(geminiRoutes);
+server.register(cronRoutes);
 
 server.get("/", async (request, reply) => {
   return reply.send({ message: "API is running..." });

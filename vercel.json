@@ -4,13 +4,23 @@
     {
       "src": "src/index.ts",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["src/**/*"] }
+      "config": {
+        "includeFiles": [
+          "src/**/*"
+        ]
+      }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "src/index.ts"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/cron/purge-photos",
+      "schedule": "0 6 * * *"
     }
   ]
 }

@@ -12,8 +12,6 @@ const urlImageAPI = `${BASE_API_URL}/v1beta/models/${GEMINI_MODEL}:generateConte
 
 const GeminiService = {
   getImageResponse: async (image64Base: string) => {
-    console.log("image64Base:");
-    console.log(image64Base);
     try {
       const response = await axios.post(
         urlImageAPI,
@@ -42,13 +40,9 @@ const GeminiService = {
           },
         }
       );
-      console.log(response.data.candidates[0].content.parts[0].text);
       const rawResponse = response.data.candidates[0].content.parts[0].text;
-      console.log("rawResponse: ", rawResponse);
       const jsonString = rawResponse.replace(/```json\n|\n```/g, "");
-      console.log("jsonString: ", jsonString);
       const jsonReponse = JSON.parse(jsonString);
-      console.log("jsonReponse: ", jsonReponse);
       return jsonReponse;
     } catch (error) {
       throw error;
